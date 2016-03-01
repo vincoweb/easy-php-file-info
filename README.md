@@ -13,7 +13,7 @@ $finfo = new \VincoWeb\FileInfo\FileInfo();
 $i = $finfo->get($file_link [, bool $return_object = false ]);
 ```
 
-Variable "$file_link" can contains **path** and also **URL**. __
+Variable "$file_link" can contains **path** and also **URL**. </br>
 Variable "$return_object" is optional. Set to **true** for return object instead of array.
 
 ## Example
