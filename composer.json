@@ -1,0 +1,26 @@
+{
+    "name": "vincoweb/easy-php-file-info",
+    "description": "Generate a new Laravel database seed file based on data from the existing database table.",
+    "keywords": ["php", "file info", "image info", "file data"],
+    "license": "Unlicensed",
+    "authors": [
+        {
+            "name": "Martin Vincenc",
+            "email": "vincoweb@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "source": {
+                "url": "git://github.com/weaverryan/derp-dangerzone.git",
+                "type": "git",
+                "reference": "master"
+            },
+    "autoload": {
+        "psr-4": {
+            "VincoWeb\\FileInfo\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
