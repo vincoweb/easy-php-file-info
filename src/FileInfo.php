@@ -9,8 +9,10 @@ class FileInfo
 
 	// returned object with file info
 	protected $file_info;
+	
 	//file url or path holder
 	protected $file_link;
+	
 	//if file is url or path
 	protected $file_location;
 
@@ -33,7 +35,7 @@ class FileInfo
 				'mime' => $finfo->file($file_link),
 				'size' => filesize($file_link),
 				'last_modified' => date("D, d M Y G:i:s", filemtime($file_link)),
-				'etag' => md5_file($file_link),
+				'etag' => @md5_file($file_link),
 			];
 		} else {
 			$info = $this->getFileInfoFromUrl($file_link);
@@ -43,7 +45,7 @@ class FileInfo
 				'mime' => isset($info['info']['content_type']) ? $info['info']['content_type'] : null,
 				'size' => isset($info['info']['download_content_length']) ? $info['info']['download_content_length'] : null,
 				'last_modified' => isset($info['headers']['Last-Modified']) ? $info['headers']['Last-Modified'] : null,
-				'etag' => isset($info['headers']['ETag']) ? $info['headers']['ETag'] : null
+				'etag' => isset($info['headers']['ETag']) ? $info['headers']['ETag'] : @md5_file($file_link)
 			];
 		}
 

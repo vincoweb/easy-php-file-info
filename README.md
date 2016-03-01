@@ -46,7 +46,7 @@ Result returns array with these keys:
 * **mime** - mime type (only from header, if $link is URL).
 * **size** - file size (if is taken from header, it can contain value "-1")
 * **last_modified** - date of last modified
-* **etag** - etag or md5 hash of file
+* **etag** - etag if remote file header etag is set otherwise md5 hash of file
 * **basename** - basename, name of file
 * **extension** - file extension got from header(if file is image, it contains real extension )
 * **type** - mime type or string "image" if file is normal image
