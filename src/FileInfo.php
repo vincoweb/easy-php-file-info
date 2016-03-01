@@ -37,7 +37,7 @@ class FileInfo
 			];
 		} else {
 			$info = $this->getFileInfoFromUrl($file_link);
-			
+
 			$this->file_info = [
 				'link' => isset($info['info']['url']) ? $info['info']['url'] : null,
 				'mime' => isset($info['info']['content_type']) ? $info['info']['content_type'] : null,
@@ -47,14 +47,19 @@ class FileInfo
 			];
 		}
 
-		$this->file_info['extension'] = pathinfo($file_link, PATHINFO_EXTENSION);
-		$this->file_info['type'] = $this->file_info['mime'];
+
+		$pathInfo = pathinfo($file_link);
+		$this->file_info = array_merge($this->file_info, [
+			'basename' => $pathInfo['basename'],
+			'extension' => $pathInfo['extension'],
+			'type' => $this->file_info['mime']
+		]);
 
 		if ($this->isImage($file_link)) {
 			$imageInfo = new FileType\ImageInfo();
 			$imageInfoArray = $imageInfo->get($file_link, $file_location);
 			$this->file_info = array_merge($this->file_info, $imageInfoArray);
-			$this->file_info['type'] =  'image';
+			$this->file_info['type'] = 'image';
 		}
 
 		return $this->file_info;
