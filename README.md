@@ -62,4 +62,4 @@ Class can throw **FileNotFoundException** (e.g if URL or path,"$file_link", does
 
 
 ## Licence
-Unlicesed. You can do what you want. Be free! 
+[Unlicense](http://unlicense.org/). You can do what you want. Be free! 
