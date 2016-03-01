@@ -7,16 +7,10 @@ use finfo;
 class FileInfo
 {
 
-	// returned object with file info
+	// returned array with file info
 	protected $file_info;
-	
-	//file url or path holder
-	protected $file_link;
-	
-	//if file is url or path
-	protected $file_location;
 
-	public function get($file_link)
+	public function get($file_link, $return_object = false)
 	{
 		$this->file_link = $file_link;
 
@@ -62,6 +56,10 @@ class FileInfo
 			$imageInfoArray = $imageInfo->get($file_link, $file_location);
 			$this->file_info = array_merge($this->file_info, $imageInfoArray);
 			$this->file_info['type'] = 'image';
+		}
+		
+		if($return_object){
+			$this->file_info = (object) $this->file_info;
 		}
 
 		return $this->file_info;
