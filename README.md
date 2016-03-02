@@ -3,7 +3,7 @@ Get easily file information from local and also remote file (mime, extension, fi
 
 ##Installation
 ```html
-composer require vincoweb/easy-php-file-info
+composer require vincoweb/easy-php-file-info=dev-master
 ```
 
 ## Usage
