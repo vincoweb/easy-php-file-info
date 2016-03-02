@@ -1,26 +1,20 @@
 {
     "name": "vincoweb/easy-php-file-info",
-    "description": "Generate a new Laravel database seed file based on data from the existing database table.",
+    "description": "Get file information from local and also remote file(mime type, extension, file name ...).",
     "keywords": ["php", "file info", "image info", "file data"],
     "license": "Unlicensed",
     "authors": [
-        {
-            "name": "Martin Vincenc",
-            "email": "vincoweb@gmail.com"
-        }
+	{
+	    "name": "Martin Vincenc",
+	    "email": "vvincoo@gmail.com"
+	}
     ],
     "require": {
-        "php": ">=5.5.0"
+	"php": ">=5.5.0"
     },
-    "source": {
-                "url": "git://github.com/weaverryan/derp-dangerzone.git",
-                "type": "git",
-                "reference": "master"
-            },
     "autoload": {
-        "psr-4": {
-            "VincoWeb\\FileInfo\\": "src/"
-        }
-    },
-    "minimum-stability": "1.0.*"
+	"psr-4": {
+	    "VincoWeb\\FileInfo\\": "src/"
+	}
+    }
 }
