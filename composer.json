@@ -16,5 +16,6 @@
 	"psr-4": {
 	    "VincoWeb\\FileInfo\\": "src/"
 	}
-    }
+    },
+     "minimum-stability" : "1.0.*"
 }
