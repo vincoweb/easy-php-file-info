@@ -146,6 +146,6 @@ class FileInfo
 	public function isImage($file_link)
 	{
 		//return false or image type constant(integer)
-		return @exif_imagetype($file_link);
+		return @exif_imagetype($file_link)? true : false;
 	}
 }
