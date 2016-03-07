@@ -17,5 +17,11 @@
 	    "VincoWeb\\FileInfo\\": "src/"
 	}
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:vincoweb/easy-php-file-info.git"
+        }
+    ],
      "minimum-stability" : "1.0.*"
 }
