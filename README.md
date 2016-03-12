@@ -8,6 +8,7 @@ composer require vincoweb/easy-php-file-info=dev-master
 
 ## Usage
 
+
 ```html
 $finfo = new \VincoWeb\FileInfo\FileInfo();
 $i = $finfo->get($file_link [, bool $return_object = false ]);
@@ -15,6 +16,31 @@ $i = $finfo->get($file_link [, bool $return_object = false ]);
 
 Variable "$file_link" can contains **path** and also **URL**. </br>
 Variable "$return_object" is optional. Set to **true** for return object instead of array.
+
+### Laravel support
+
+add provider and alias in config/app.php
+
+```html
+'providers' => [
+    ...
+    VincoWeb\FileInfo\FileInfoServiceProvider::class
+]
+
+...
+
+'aliases' => [
+    ...
+    'FileInfo'	=> VincoWeb\FileInfo\FileInfoFacade::class,
+],
+```
+
+and in laravel you use it
+
+```html
+    FileInfo::get($file_link [, bool $return_object = false ]);
+```
+
 
 ## Example
 
