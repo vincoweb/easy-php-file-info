@@ -6,6 +6,6 @@ class FileInfoFacade extends \Illuminate\Support\Facades\Facade
 {
 	protected static function getFacadeAccessor()
 	{
-		return 'fileinfo';
+		return FileInfo::class;
 	}
 }
