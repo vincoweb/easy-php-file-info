@@ -65,6 +65,7 @@ try {
 
 ```html
 Array ( [link] => https://www.google.sk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png [mime] => image/png [size] => 13504 [last_modified] => Fri, 04 Sep 2015 22:33:08 GMT [etag] => [extension] => png [type] => image [location] => url [width] => 544 [height] => 3 )```
+```
 
 Result returns array with these keys:
 * **link** - where file was finded (if there was redirection, it contains reditected location)
