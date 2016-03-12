@@ -82,7 +82,11 @@ class FileInfo
 
 	protected function isFilePath($file_path)
 	{
-		return is_file($file_path);
+		$isFile =  is_file($file_path);
+		
+		clearstatcache();
+		
+		return $isFile;
 	}
 
 	protected function isFileUrl($file_url)
