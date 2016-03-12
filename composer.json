@@ -1,0 +1,20 @@
+{
+    "name": "vincoweb/easy-php-file-info",
+    "description": "Get file information from local and also remote file(mime type, extension, file name ...).",
+    "keywords": ["php", "file info", "image info", "file data"],
+    "license": "Unlicensed",
+    "authors": [
+	{
+	    "name": "Martin Vincenc",
+	    "email": "vvincoo@gmail.com"
+	}
+    ],
+    "require": {
+	"php": ">=5.5.0"
+    },
+    "autoload": {
+	"psr-4": {
+	    "VincoWeb\\FileInfo\\": "src/"
+	}
+    }
+}
