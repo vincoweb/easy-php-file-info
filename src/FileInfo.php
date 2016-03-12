@@ -11,8 +11,6 @@ class FileInfo
 	protected $file_info;
 	//file url or path holder
 	protected $file_link;
-	//if file is url or path
-	protected $file_location;
 
 	public function get($file_link)
 	{
