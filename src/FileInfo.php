@@ -47,6 +47,7 @@ class FileInfo
 
 		$this->file_info['extension'] = pathinfo($file_link, PATHINFO_EXTENSION);
 		$this->file_info['type'] = $this->file_info['mime'];
+		$this->file_info['location'] = $file_location;
 
 		if ($this->isImage($file_link)) {
 			$imageInfo = new FileType\ImageInfo();
