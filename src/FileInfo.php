@@ -7,14 +7,10 @@ use finfo;
 class FileInfo
 {
 
-	// returned object with file info
+	// returned array with file info
 	protected $file_info;
-	//file url or path holder
-	protected $file_link;
-	//if file is url or path
-	protected $file_location;
 
-	public function get($file_link)
+	public function get($file_link, $return_object = false)
 	{
 		$this->file_link = $file_link;
 
@@ -33,28 +29,37 @@ class FileInfo
 				'mime' => $finfo->file($file_link),
 				'size' => filesize($file_link),
 				'last_modified' => date("D, d M Y G:i:s", filemtime($file_link)),
-				'etag' => md5_file($file_link),
+				'etag' => @md5_file($file_link),
 			];
 		} else {
 			$info = $this->getFileInfoFromUrl($file_link);
-			
+
 			$this->file_info = [
 				'link' => isset($info['info']['url']) ? $info['info']['url'] : null,
 				'mime' => isset($info['info']['content_type']) ? $info['info']['content_type'] : null,
 				'size' => isset($info['info']['download_content_length']) ? $info['info']['download_content_length'] : null,
 				'last_modified' => isset($info['headers']['Last-Modified']) ? $info['headers']['Last-Modified'] : null,
-				'etag' => isset($info['headers']['ETag']) ? $info['headers']['ETag'] : null
+				'etag' => isset($info['headers']['ETag']) ? $info['headers']['ETag'] : @md5_file($file_link)
 			];
 		}
 
-		$this->file_info['extension'] = pathinfo($file_link, PATHINFO_EXTENSION);
-		$this->file_info['type'] = $this->file_info['mime'];
+
+		$pathInfo = pathinfo($file_link);
+		$this->file_info = array_merge($this->file_info, [
+			'basename' => $pathInfo['basename'],
+			'extension' => $pathInfo['extension'],
+			'type' => $this->file_info['mime']
+		]);
 
 		if ($this->isImage($file_link)) {
 			$imageInfo = new FileType\ImageInfo();
 			$imageInfoArray = $imageInfo->get($file_link, $file_location);
 			$this->file_info = array_merge($this->file_info, $imageInfoArray);
-			$this->file_info['type'] =  'image';
+			$this->file_info['type'] = 'image';
+		}
+		
+		if($return_object){
+			$this->file_info = (object) $this->file_info;
 		}
 
 		return $this->file_info;
@@ -77,7 +82,11 @@ class FileInfo
 
 	protected function isFilePath($file_path)
 	{
-		return is_file($file_path);
+		$isFile =  is_file($file_path);
+		
+		clearstatcache();
+		
+		return $isFile;
 	}
 
 	protected function isFileUrl($file_url)
@@ -141,6 +150,6 @@ class FileInfo
 	public function isImage($file_link)
 	{
 		//return false or image type constant(integer)
-		return @exif_imagetype($file_link);
+		return @exif_imagetype($file_link)? true : false;
 	}
 }
