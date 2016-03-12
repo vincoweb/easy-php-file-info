@@ -8,6 +8,7 @@ composer require vincoweb/easy-php-file-info=dev-master
 
 ## Usage
 
+
 ```html
 $finfo = new \VincoWeb\FileInfo\FileInfo();
 $i = $finfo->get($file_link [, bool $return_object = false ]);
