@@ -64,15 +64,16 @@ try {
 ### Result
 
 ```html
-Array ( [link] => https://www.google.sk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png [mime] => image/png [size] => 13504 [last_modified] => Fri, 04 Sep 2015 22:33:08 GMT [etag] => [basename] => googlelogo_color_272x92dp.png [extension] => png [type] => image [width] => 544 [height] => 3 )
+Array ( [link] => https://www.google.sk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png [mime] => image/png [size] => 13504 [last_modified] => Fri, 04 Sep 2015 22:33:08 GMT [etag] => [extension] => png [type] => image [location] => url [width] => 544 [height] => 3 )```
 ```
 
 Result returns array with these keys:
 * **link** - where file was finded (if there was redirection, it contains reditected location)
+* **location** - location of $file_link ( return string "URL" or "path")
 * **mime** - mime type (only from header, if $link is URL).
 * **size** - file size (if is taken from header, it can contain value "-1")
 * **last_modified** - date of last modified
-* **etag** - etag if remote file header etag is set otherwise md5 hash of file
+* **etag** - file header etag from ULR (can be empty) or md5 hash of file from path
 * **basename** - basename, name of file
 * **extension** - file extension got from header(if file is image, it contains real extension )
 * **type** - mime type or string "image" if file is normal image

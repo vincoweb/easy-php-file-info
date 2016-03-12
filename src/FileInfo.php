@@ -11,8 +11,6 @@ class FileInfo
 	protected $file_info;
 	//file url or path holder
 	protected $file_link;
-	//if file is url or path
-	protected $file_location;
 
 	public function get($file_link)
 	{
@@ -49,6 +47,7 @@ class FileInfo
 
 		$this->file_info['extension'] = pathinfo($file_link, PATHINFO_EXTENSION);
 		$this->file_info['type'] = $this->file_info['mime'];
+		$this->file_info['location'] = $file_location;
 
 		if ($this->isImage($file_link)) {
 			$imageInfo = new FileType\ImageInfo();
@@ -77,7 +76,11 @@ class FileInfo
 
 	protected function isFilePath($file_path)
 	{
-		return is_file($file_path);
+		$is_file = is_file($file_path);
+		
+		clearstatcache();
+		
+		return $is_file;
 	}
 
 	protected function isFileUrl($file_url)
