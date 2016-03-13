@@ -20,7 +20,7 @@ class FileInfo
 		$file_location = $this->getFileLocation($file_link);
 
 		if (!$file_location) {
-			throw new FileNotFoundException("This link to file does not exists or link is broken: $file_link");
+			return false;
 		}
 
 		if ($file_location == 'path') {

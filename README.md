@@ -52,14 +52,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $finfo = new \VincoWeb\FileInfo\FileInfo();
 
-try {
-	$i = $finfo->get('https://www.google.sk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
-} catch (FileNotFoundException  $e) {
-	echo "FileNotFound Exception('{$e->getMessage()}')";
-} catch (Exception $e) {
-	echo "Caught Exception ('{$e->getMessage()}')";
-}
-
+$i = $finfo->get('https://www.google.sk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
 ```
 ### Result
 
@@ -81,8 +74,7 @@ Result returns array with these keys:
 * [**height**] - height dimension, **this key exists only if file is image**
 
 
-Class can throw **FileNotFoundException** (e.g if URL or path,"$file_link", does not contain file)
-
+It can return boolean **false** (i.e. if file not exist).
 
 ## Features
 
