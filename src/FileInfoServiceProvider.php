@@ -2,6 +2,8 @@
 
 namespace VincoWeb\FileInfo;
 
+use VincoWeb\FileInfo\FileInfo;
+
 class FileInfoServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 
@@ -9,7 +11,7 @@ class FileInfoServiceProvider extends \Illuminate\Support\ServiceProvider
 
 	public function register()
 	{
-		$this->app->singleton('fileinfo', function()
+		$this->app->singleton(FileInfo::class, function()
 		{
 			return new FileInfo();
 		});
