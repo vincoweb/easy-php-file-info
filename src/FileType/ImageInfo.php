@@ -16,7 +16,7 @@ class ImageInfo
 			
 			return [
 				'width' => $imageSizes[0],
-				'height' => $imageSizes[2],
+				'height' => $imageSizes[1],
 				'mime' => $imageSizes['mime'],
 				'extension' => image_type_to_extension($imageSizes[2], false) //return file extension from mime type constant without dot
 			];
